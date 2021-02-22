@@ -1,4 +1,4 @@
-#Tutorial Comunicação MQTT com STM32 e ESP8266 utilizando comandos AT
+# Tutorial Comunicação MQTT com STM32 e ESP8266 utilizando comandos AT
 
 ## Configurando Placa STM32
 1 - Fazer o Bootloader do stmduino (generic_boot20_pc13.bin) utilizando a ferramenta STM32CubeProg, a qual pode ser obtida através do link:
@@ -16,18 +16,22 @@ https://github.com/nodemcu/nodemcu-flasher
 ## Configuração do Script 
 5 - Baixar as bibliotecas WiFiEsp e PubSubClient na IDE do Arduino.
 6 - Se houver erro na biblioteca WiFiEsp durante a compilação, realize as etapas:
-	6.1 - Inserir biblioteca stdarg.h no arquivo EspDrv.cpp (Documentos/Arduino/libraries/WiFiEsp/src/utility/EspDrv.cpp) 
+
+6.1 - Inserir biblioteca stdarg.h no arquivo EspDrv.cpp (Documentos/Arduino/libraries/WiFiEsp/src/utility/EspDrv.cpp) 
 por que não estava reconhecendo argumentos opcionais: 
+
 	#include <stdarg.h>
+
 6.2 - Modifique função:
+
 	vsnprintf_P (cmdBuf, CMD_BUFFER_SIZE, (char*)cmd, args); por
 	vsnprintf (cmdBuf, CMD_BUFFER_SIZE, (char*)cmd, args);
 
 7 - Após instalar a biblioteca PubSubCliente, altere os seguintes parâmetros no arquivo PubSubClient.h para os definidos abaixo:
 
-#define MQTT_MAX_PACKET_SIZE 256
-#define MQTT_KEEPALIVE 120
-#define MQTT_SOCKET_TIMEOUT 120
+	#define MQTT_MAX_PACKET_SIZE 256
+	#define MQTT_KEEPALIVE 120
+	#define MQTT_SOCKET_TIMEOUT 120
 
 ## Execução do Script
 Pronto, agora é só compilar o script (Example_Stm32_WiFiEsp_MQTT.ino) e executar.
