@@ -1,39 +1,39 @@
-# Tutorial ComunicaÁ„o MQTT com STM32 e ESP8266 utilizando comandos AT
+# Tutorial Comunica√ß√£o MQTT com STM32 e ESP8266 utilizando comandos AT
 
 ## Configurando Placa STM32
-1 - Fazer o Bootloader do stmduino (generic_boot20_pc13.bin) utilizando a ferramenta STM32CubeProg, a qual pode ser obtida atravÈs do link:
-https://www.st.com/en/development-tools/stm32cubeprog.html
+1 - Instalar bootloader do stmduino (generic_boot20_pc13.bin) utilizando a ferramenta STM32CubeProg, a qual pode ser obtida atrav√©s do link:
+https://www.st.com/en/development-tools/stm32cubeprog.html. Gravar no endere√ßo de mem√≥ria 0x08000000.
 
 2 - Instalar os drivers Maple (install_drivers.bat e install_STM_COM_drivers.bat) para o microcontrolador ser reconhecido pela IDE do Arduino.
 
 ## Configurando ESP8266-01
 3 - Instalar Firmware (Ai-Thinker_ESP8266_DOUT_8Mbit_v1.5.4.1-a_20171130.bin) no ESP8266 utilizando a ferramenta nodemcu-flasher que pode ser baixada por esse link:
-https://github.com/nodemcu/nodemcu-flasher
+https://github.com/nodemcu/nodemcu-flasher. Gravar no endere√ßo de mem√≥ria 0x000000.
 
-## Conex„o STM32 - Arduino
-4 - Conectar UART1 do stm32 nos pinos Serial do ESP8266 (ver imagens dos pinouts). Ambas as seriais ter„o baud rate: 115200
+## Conex√£o STM32 - Arduino
+4 - Conectar UART1 (Tx - PA9, RX - PA10) do stm32 nos pinos Serial do ESP8266 (ver imagens dos pinouts). Ambas as seriais ter√£o baud rate: 115200 bps.
 ![](Images/stm32f103c8t6_pinout.png)
 ![](Images/pinout-esp01.png)
 
-## ConfiguraÁ„o do Script 
+## Configura√ß√£o do Script 
 5 - Baixar as bibliotecas WiFiEsp e PubSubClient na IDE do Arduino.
-6 - Se houver erro na biblioteca WiFiEsp durante a compilaÁ„o, realize as etapas:
+6 - Se houver erro na biblioteca WiFiEsp durante a compila√ß√£o, realize as etapas:
 
 6.1 - Inserir biblioteca stdarg.h no arquivo EspDrv.cpp (Documentos/Arduino/libraries/WiFiEsp/src/utility/EspDrv.cpp) 
-por que n„o estava reconhecendo argumentos opcionais: 
+por que n√£o estava reconhecendo argumentos opcionais: 
 
 	#include <stdarg.h>
 
-6.2 - Modifique funÁ„o:
+6.2 - Modifique fun√ß√£o:
 
 	vsnprintf_P (cmdBuf, CMD_BUFFER_SIZE, (char*)cmd, args); por
 	vsnprintf (cmdBuf, CMD_BUFFER_SIZE, (char*)cmd, args);
 
-7 - ApÛs instalar a biblioteca PubSubCliente, altere os seguintes par‚metros no arquivo PubSubClient.h para os definidos abaixo:
+7 - Ap√≥s instalar a biblioteca PubSubCliente, altere os seguintes par√¢metros no arquivo PubSubClient.h para os definidos abaixo:
 
 	#define MQTT_MAX_PACKET_SIZE 256
 	#define MQTT_KEEPALIVE 120
 	#define MQTT_SOCKET_TIMEOUT 120
 
-## ExecuÁ„o do Script
-Pronto, agora È sÛ compilar o script (Example_Stm32_WiFiEsp_MQTT.ino) e executar.
+## Execu√ß√£o do Script
+Pronto, agora √© s√≥ compilar o script (Example_Stm32_WiFiEsp_MQTT.ino) e executar.
