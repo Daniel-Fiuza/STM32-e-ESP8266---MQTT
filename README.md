@@ -14,6 +14,7 @@ https://github.com/nodemcu/nodemcu-flasher. Gravar no endereço de memória 0x00
 4 - Conectar UART1 (Tx - PA9, RX - PA10) do stm32 nos pinos Serial do ESP8266 (ver imagens dos pinouts). Ambas as seriais terão baud rate: 115200 bps.
 ![](Images/stm32f103c8t6_pinout.png)
 ![](Images/pinout-esp01.png)
+![](Images/conexao-stm32-esp8266.png)
 
 ## Configuração do Script 
 5 - Baixar as bibliotecas WiFiEsp e PubSubClient na IDE do Arduino.
