@@ -18,6 +18,7 @@ https://github.com/nodemcu/nodemcu-flasher. Gravar no endereço de memória 0x00
 
 ## Configuração do Script 
 5 - Baixar as bibliotecas WiFiEsp e PubSubClient na IDE do Arduino.
+
 6 - Se houver erro na biblioteca WiFiEsp durante a compilação, realize as etapas:
 
 6.1 - Inserir biblioteca stdarg.h no arquivo EspDrv.cpp (Documentos/Arduino/libraries/WiFiEsp/src/utility/EspDrv.cpp) 
@@ -25,12 +26,12 @@ por que não estava reconhecendo argumentos opcionais:
 
 	#include <stdarg.h>
 
-6.2 - Modifique função:
+6.2 - Modifique a função:
 
 	vsnprintf_P (cmdBuf, CMD_BUFFER_SIZE, (char*)cmd, args); por
 	vsnprintf (cmdBuf, CMD_BUFFER_SIZE, (char*)cmd, args);
 
-7 - Após instalar a biblioteca PubSubCliente, altere os seguintes parâmetros no arquivo PubSubClient.h para os definidos abaixo:
+7 - Após instalar a biblioteca PubSubCliente, substitua os seguintes parâmetros MQTT no arquivo PubSubClient.h para os definidos abaixo:
 
 	#define MQTT_MAX_PACKET_SIZE 256
 	#define MQTT_KEEPALIVE 120
