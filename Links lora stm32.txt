@@ -1,0 +1,11 @@
+https://www.thethingsnetwork.org/article/setting-up-a-private-routing-environment  -> stm32 lora ide arduino
+
+https://github.com/realspinner/SX1278_LoRa -> Biblioteca atual (com versao para arduino)
+
+https://pypi.org/project/ttn/ --> implementação servidor ttn em python
+
+https://github.com/GrumpyOldPizza/ArduinoCore-stm32l0/blob/master/libraries/LoRaWAN/src/LoRaWAN.h --> lorawan ide arduino
+
+https://github.com/armtronix/arduino-LoRa-STM32 --> stm32 lora arduino
+
+
